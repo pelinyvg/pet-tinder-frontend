@@ -6,13 +6,14 @@ export interface Pet {
   kind: Kind;
   image: string;
   profileText: string;
+  popularity: number;
 
-/*  constructor(id: number, name: string, kind: Kind, image: string, profileText: string, popularity: number) {
-  this.id = id;
-  this.name = name;
-  this.kind = kind;
-  this.image = image;
-  this.profileText = profileText;
-  this.popularity = popularity;
+/*  constructor(private id: number, name: string, kind: Kind, image: string, profileText: string, popularity: number) {
+      this.id = id;
+      this.name = name;
+      this.kind = kind;
+      this.image = image;
+      this.profileText = profileText;
+      this.popularity = popularity;
   }*/
 }

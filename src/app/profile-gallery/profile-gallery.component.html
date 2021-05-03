@@ -35,7 +35,28 @@
                    name="name"
                    class="form-control"
                    placeholder="Name"
-                   [(ngModel)]="searchText" >
+                   [(ngModel)]="searchText">
+          </div>
+        </section>
+
+        <section class="tiny-dialog fader">
+          <div class="form-group">
+            <h3>Add a pet</h3>
+            <form [formGroup]="createPetForm" (ngSubmit)="onSubmit()">
+              <label>Name</label>
+              <input type="text" class="form-control" formControlName="name" placeholder="Name">
+              <label for="kind">Kind</label>
+              <input type="text" class="form-control" formControlName="kind" placeholder="Kind" id="kind">
+              <label for="image">Picture</label>
+              <input type="text" class="form-control" formControlName="image" placeholder="image" id="image">
+              <label for="profile">Profile Text</label>
+              <input type="text" class="form-control" formControlName="profileText" placeholder="Profile Text"
+                     id="profile">
+              <label for="popularity">Popularity</label>
+              <input type="text" class="form-control" formControlName="popularity" placeholder="Popularity"
+                     id="popularity">
+              <button type="submit" class="btn btn-primary pull-right">Create Pet</button>
+            </form>
           </div>
         </section>
 
@@ -43,6 +64,7 @@
           <h3>{{petSelected.name}}</h3>
           <p>{{petSelected.profileText}}</p>
         </section>
+
       </div>
     </div>
 

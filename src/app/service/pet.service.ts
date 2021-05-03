@@ -29,4 +29,8 @@ export class PetService {
     );
   }
 
+  addPet(pet: Pet): Observable<Pet> {
+    return this.http.post<Pet>(this.baseUrl, pet);
+  }
+
 }

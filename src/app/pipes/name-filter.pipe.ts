@@ -7,10 +7,14 @@ import {Pet} from '../model/pet';
 export class NameFilterPipe implements PipeTransform {
 
   transform(pets: Pet[], searchText: string): any[] {
-    searchText.toLocaleLowerCase();
-    return pets.filter(pet => {
-        return pet.name.toLocaleLowerCase().includes(searchText);
-      }
-    );
+    if (searchText) {
+      const search = searchText.toLocaleLowerCase();
+
+      return pets.filter(pet => {
+          return pet.name.toLocaleLowerCase().includes(search);
+        }
+      );
+    }
+    return pets;
   }
 }
