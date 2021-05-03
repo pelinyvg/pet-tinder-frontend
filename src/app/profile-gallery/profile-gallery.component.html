@@ -4,7 +4,7 @@
     <div id="gallery" class="col-md-9">
       <div class="gallery">
         <div class="gallery-pet fader" *ngFor="let pet of pets | nameFilter: searchText" (click)="selectedPet(pet)">
-          <img class="profile-picture" [src]="'https://pettinder.herokuapp.com/'+ pet.image">
+          <img class="profile-picture" [src]="'https://pettinder.herokuapp.com/'+ pet.image" alt="profile picture">
           <div class="overlay">
             <div class="overlay-text">
               {{pet.name}}
@@ -55,7 +55,7 @@
               <label for="popularity">Popularity</label>
               <input type="text" class="form-control" formControlName="popularity" placeholder="Popularity"
                      id="popularity">
-              <button type="submit" class="btn btn-primary pull-right">Create Pet</button>
+              <button type="submit" class="btn btn-primary pull-right mt-2">Create Pet</button>
             </form>
           </div>
         </section>
@@ -63,6 +63,12 @@
         <section id="petProfile" class="tiny-dialog fader" *ngIf="petSelected">
           <h3>{{petSelected.name}}</h3>
           <p>{{petSelected.profileText}}</p>
+          <div class="dialog-centered">
+            <a type="button"
+               class="btn btn-primary btn-lg dialog-centered" routerLink="/setup-date/{{petSelected.name}}">
+              Setup date
+              </a>
+          </div>
         </section>
 
       </div>

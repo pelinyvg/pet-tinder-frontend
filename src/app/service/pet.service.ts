@@ -33,4 +33,7 @@ export class PetService {
     return this.http.post<Pet>(this.baseUrl, pet);
   }
 
+  getPetByName(name: string): Observable<Pet> {
+    return this.http.get<Pet>(`${this.baseUrl}/${name}`).pipe(map(response => response));
+  }
 }
