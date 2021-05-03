@@ -36,4 +36,8 @@ export class PetService {
   getPetByName(name: string): Observable<Pet> {
     return this.http.get<Pet>(`${this.baseUrl}/${name}`).pipe(map(response => response));
   }
+
+  deletePet(id: number): Observable<any> {
+    return this.http.delete(`${this.baseUrl}/${id}`, {responseType: 'text'});
+  }
 }

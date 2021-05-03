@@ -11,7 +11,7 @@ import {FormBuilder, FormGroup} from '@angular/forms';
 export class ProfileGalleryComponent implements OnInit {
 
   pets: Pet[] = [];
-  petSelected: Pet | undefined;
+  petSelected: Pet | any;
   searchText: any;
   createPetForm = this.formBuilder.group({
     name: '',
@@ -22,6 +22,7 @@ export class ProfileGalleryComponent implements OnInit {
   });
 
   constructor(private petService: PetService, private formBuilder: FormBuilder) {
+    this.petSelected = undefined;
   }
 
   ngOnInit(): void {
@@ -45,6 +46,15 @@ export class ProfileGalleryComponent implements OnInit {
         this.getPets();
       }
     );
+  }
 
+  delete(pet: Pet): void {
+    this.petSelected = pet;
+    this.petService.deletePet(this.petSelected).subscribe(
+      () => {
+        this.getPets();
+        this.petSelected = null;
+      }
+    );
   }
 }

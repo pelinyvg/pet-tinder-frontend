@@ -9,13 +9,15 @@ import {HttpClientModule} from '@angular/common/http';
 import {NameFilterPipe} from './pipes/name-filter.pipe';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { SetupDateComponent } from './date/setup-date/setup-date.component';
+import { NotFoundComponent } from './error/not-found/not-found.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     ProfileGalleryComponent,
     NameFilterPipe,
-    SetupDateComponent
+    SetupDateComponent,
+    NotFoundComponent
   ],
   imports: [
     BrowserModule,
