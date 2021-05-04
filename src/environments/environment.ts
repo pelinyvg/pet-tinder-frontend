@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  backendUrl: 'https://petindear.herokuapp.com/'
+  backendUrl: 'https://petindear.herokuapp.com'
 };
 
 /*
