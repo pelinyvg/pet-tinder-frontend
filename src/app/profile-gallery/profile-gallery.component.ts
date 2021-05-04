@@ -34,8 +34,9 @@ export class ProfileGalleryComponent implements OnInit {
       pets => this.pets = pets);
   }
 
-  selectedPet(pet: Pet): Pet {
+  selectedPet(pet: Pet, event: Event): Pet {
     return this.petSelected = pet;
+    event.stopPropagation();
   }
 
   onSubmit(): void {
