@@ -5,7 +5,7 @@
       <div class="gallery">
         <div class="gallery-pet fader"
              *ngFor="let pet of pets | nameFilter: searchText"
-             [ngClass]="{active: selectedPet === pet}"
+             [ngClass]="{active: petSelected === pet}"
              (click)="selectedPet(pet)">
           <img class="profile-picture" [src]="'https://pettinder.herokuapp.com/'+ pet.image" alt="profile picture">
           <div class="overlay">
