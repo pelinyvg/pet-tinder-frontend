@@ -20,6 +20,7 @@ export class ProfileGalleryComponent implements OnInit {
     profileText: '',
     popularity: ''
   });
+  popularity1: string | undefined;
 
   constructor(private petService: PetService, private formBuilder: FormBuilder) {
     this.petSelected = undefined;
@@ -34,8 +35,9 @@ export class ProfileGalleryComponent implements OnInit {
       pets => this.pets = pets);
   }
 
-  selectedPet(pet: Pet, event: Event): Pet {
-    return this.petSelected = pet;
+  selectedPet(pet: Pet, event: Event): void {
+    this.petSelected = pet;
+    this.popularity1 = this.getPopularity(this.petSelected.popularity);
     event.stopPropagation();
   }
 
@@ -57,5 +59,17 @@ export class ProfileGalleryComponent implements OnInit {
         this.petSelected = null;
       }
     );
+  }
+
+  getPopularity(pop: number): string {
+    if (pop < 1) {
+      return this.popularity1 = 'Freezing';
+    } else if (pop < 3) {
+      return this.popularity1 = 'Normal';
+    } else if (pop < 5) {
+      return this.popularity1 = 'Popular';
+    } else {
+      return this.popularity1 = 'Sizzling hot!';
+    }
   }
 }
