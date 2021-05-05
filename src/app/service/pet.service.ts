@@ -40,4 +40,8 @@ export class PetService {
   deletePet(id: number): Observable<any> {
     return this.http.delete(`${this.baseUrl}/${id}`, {responseType: 'text'});
   }
+
+  sendText(name: string): Observable<any> {
+    return this.http.post(`${this.baseUrl}/sendText`, name);
+  }
 }

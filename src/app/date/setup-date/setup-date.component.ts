@@ -11,11 +11,14 @@ import {FormBuilder} from '@angular/forms';
 })
 export class SetupDateComponent implements OnInit {
   private _pet!: Pet;
+  sendText: any;
   sendTextForm = this.formBuilder.group({
     name: ''
   });
 
-  constructor(private route: ActivatedRoute, private petService: PetService, private formBuilder: FormBuilder) { }
+  constructor(private route: ActivatedRoute,
+              private petService: PetService,
+              private formBuilder: FormBuilder) { }
 
   ngOnInit(): void {
     const name = this.route.snapshot.params.name;
@@ -27,6 +30,12 @@ export class SetupDateComponent implements OnInit {
   }
 
   onSubmit(): void {
+    this.petService.sendText(this.sendTextForm.value).subscribe(
+      () => this.sendTextForm.reset()
+    );
+  }
+
+  textPet(): void {
 
   }
 }
