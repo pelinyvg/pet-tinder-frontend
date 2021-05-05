@@ -31,13 +31,11 @@ export class SetupDateComponent implements OnInit {
   }
 
   onSubmit(): void {
-
+    this.petService.getPopularity(this.pet.name).subscribe(
+      () => this.router.navigate([''])
+    );
     this.petService.sendText(this.sendTextForm.value).subscribe(
-      () => {
-        this.sendTextForm.reset();
-        this.petService.getPopularity(this.pet.name).subscribe(
-          () => this.router.navigate([''])
-        );
+      () => {this.sendTextForm.reset();
       }
     );
   }
