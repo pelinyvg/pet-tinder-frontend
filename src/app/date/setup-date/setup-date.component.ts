@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {Pet} from '../../model/pet';
-import {ActivatedRoute} from '@angular/router';
+import {ActivatedRoute, Router} from '@angular/router';
 import {PetService} from '../../service/pet.service';
 import {FormBuilder} from '@angular/forms';
 
@@ -17,6 +17,7 @@ export class SetupDateComponent implements OnInit {
   });
 
   constructor(private route: ActivatedRoute,
+              private router: Router,
               private petService: PetService,
               private formBuilder: FormBuilder) { }
 
@@ -30,12 +31,11 @@ export class SetupDateComponent implements OnInit {
   }
 
   onSubmit(): void {
+    this.petService.getPopularity(this.pet.name).subscribe(
+      () => this.router.navigate([''])
+    );
     this.petService.sendText(this.sendTextForm.value).subscribe(
       () => this.sendTextForm.reset()
     );
-  }
-
-  textPet(): void {
-
   }
 }
